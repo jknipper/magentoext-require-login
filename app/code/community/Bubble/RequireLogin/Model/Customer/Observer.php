@@ -18,8 +18,10 @@ class Bubble_RequireLogin_Model_Customer_Observer
             $requestString = $controllerAction->getRequest()->getRequestString();
 
             if (!preg_match($helper->getWhitelist(), $requestString)) {
-                $session->setBeforeAuthUrl($requestString);
-                $controllerAction->getResponse()->setRedirect(Mage::getUrl('customer/account/login'));
+				$requestUrl = Mage::getUrl(ltrim($requestString, '/'));
+                $session->setBeforeAuthUrl($requestUrl);
+	            $session->setAfterAuthUrl($requestUrl);
+	            $controllerAction->getResponse()->setRedirect(Mage::getUrl('customer/account/login'));
                 $controllerAction->getResponse()->sendResponse();
                 exit;
             }
