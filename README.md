@@ -1,3 +1,5 @@
+This is a fork of https://github.com/jreinke/magento-require-login
+
 # A Magento module for requiring user authentication in frontend
 
 ![Magento Require Login](http://i.imgur.com/A9yU4SN.png)
